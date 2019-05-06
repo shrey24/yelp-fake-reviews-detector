@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+
+    <body>
+
+        <h1>Review checker</h1>
+        <!-- {% for item in results %} 
+            <h2> {{ item.pred }}</h2>
+            <p> model accuracy is {{ item.acc }}</p>
+        {% endfor %} -->
+
+        <div>
+            <form method="POST" class="post-form">{% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <p> <h3>{{ results }}</h3></p>
+
+    </body>
+</html>

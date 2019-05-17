@@ -2,6 +2,7 @@ print("Model imported!!")
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from tqdm import tqdm
+import numpy as np
 import pandas as pd
 import spacy
 import pickle
@@ -67,4 +68,8 @@ def predict(review):
     X_rev_idf = process(review)
     print("Processed: ", X_rev_idf)
     prediction = sk_nblearn.predict(X_rev_idf)
-    return prediction
+    probablity = sk_nblearn.predict_proba(X_rev_idf)
+    print('='*30)
+    print("results: ")
+    print(prediction, probablity, np.max(probablity))
+    return {'result':prediction, 'prob':np.max(probablity)}

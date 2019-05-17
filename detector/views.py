@@ -22,21 +22,26 @@ def home(request):
         form = ReviewForm(request.POST)
         review = form.data['text']
         result = ml.predict(review)
-        print("result: ", result)
-        print(result.shape)
+        print("result: ", result['result'])
+        print("prob: ", result['prob'])
 
-        if result[0] == 0:
-            results = 'Not fake'
+        if result['result'] == 0:
+            results = 'Given review is Not fake'
         else:
-            results = "Fake"
+            results = "Given review is Fake"
+        prob_statement = "probablity score: "+str(result['prob'])
+
+        context = {
+        'form': form,
+        'results': results,
+        'prob': prob_statement
+        }
+        
+        return render(request, 'detector/home.html', context=context)
 
     else:
         form = ReviewForm()
+        return render(request, 'detector/home.html', {'form': form})
     
-    context = {
-        'form': form,
-        'results': results
-    }
     
-    return render(request, 'detector/home.html', context=context)
 

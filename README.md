@@ -7,7 +7,7 @@ A machine learning system to detect fake reviews on Yelp.
 ## Model training
 Refer to the <a href="">Jupyter notebooks</a> in research folder to know the steps taken for preprocessing, model development and algorithms used.
 Alghough we experemented with different models, we found Naive Bayes to be most accurate with F1 score of 77%.
-<img src="pics/nb_roc.png/>
+<img src="pics/nb_roc.png"/>
 
 ## Installing and running this app:
 1. Requirements:
